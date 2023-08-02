@@ -31,7 +31,7 @@ class Player(Base):
                            secondary=player_league,
                            order_by="(League.league_name)",
                            back_populates="players")
-    team = relationship("Team", back_populates="player")
+    team = relationship("Team", back_populates="player_")
 
 
 class League(Base):
@@ -52,7 +52,7 @@ class Team(Base):
 
     player_id = Column(Integer, ForeignKey("player.player_id"))
 
-    player = relationship("Player", back_populates="team")
+    player_ = relationship("Player", back_populates="team")
 
     footballers = relationship("Footballer",
                                secondary=footballer_team,
